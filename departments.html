@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+  <head>
+    <title>CourseEbook</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <link rel="icon" sizes="512x512" href="images/CourseEbookIcon.png" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:400,500,600%7CTeko:300,400,500%7CMaven+Pro:500">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
+  </head>
+  <body>
+    <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <div class="preloader">
+      <div class="preloader-body">
+        <div class="cssload-container"><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="page">
+        <!-- Page Header-->
+        <header class="section page-header">
+          <!-- RD Navbar-->
+          <div class="rd-navbar-wrap">
+            <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+              <div class="rd-navbar-main-outer">
+                <div class="rd-navbar-main">
+                  <!-- RD Navbar Panel-->
+                  <div class="rd-navbar-panel">
+                    <!-- RD Navbar Toggle-->
+                    <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                    <!-- RD Navbar Brand-->
+                    <div class="rd-navbar-brand"><a class="brand" href="home.html"><img src="images/CourseEbook.png" alt="" width="223" height="50"/></a></div>
+                  </div>
+                  <div class="rd-navbar-main-element">
+                    <div class="rd-navbar-nav-wrap">
+                      <!-- RD Navbar Share-->
+                      <div class="rd-navbar-share fl-bigmug-line-share27" data-rd-navbar-toggle=".rd-navbar-share-list">
+                        <ul class="list-inline rd-navbar-share-list">
+                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-facebook" href="#"></a></li>
+                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-twitter" href="#"></a></li>
+                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-google-plus" href="#"></a></li>
+                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-instagram" href="#"></a></li>
+                        </ul>
+                      </div>
+                      <ul class="rd-navbar-nav">
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="#">Home</a></li>
+                        <li class="rd-nav-item active"><a class="rd-nav-link" href="#">Universities</a></li>
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="#">Upload materials</a></li>
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="#">Community</a></li>
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="#">About us</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </header>
+
+        <section>
+          <div class="container">
+            <h2 class="section-title text-center">Select a Department</h2>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search Departments...">
+    
+            <div class="department-grid" id="departmentGrid">
+    
+                <!-- Example Department Cards (Replace with your data) -->
+                <div class="card department-card" data-department="Simultaneous translations (ENG)">
+                    <div class="department-card-img">
+                        <img src="images/faculties/translation.jpg" alt="Simultaneous Translations (ENG) Department">
+                    </div>
+                    <div class="department-card-body">
+                        <h5 class="department-card-title">Simultaneous Translations (ENG)</h5>
+                        <p class="department-card-text">Study the art of simultaneous translation in English.</p>
+                        <a href="year-course.html" class="department-card-details-btn">View Courses <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            
+                <div class="card department-card" data-department="Simultaneous translation (FRE)">
+                    <div class="department-card-img">
+                        <img src="images/faculties/translation.jpg" alt="Simultaneous Translation (FRE) Department">
+                    </div>
+                    <div class="department-card-body">
+                        <h5 class="department-card-title">Simultaneous Translation (FRE)</h5>
+                        <p class="department-card-text">Explore simultaneous translation techniques in French.</p>
+                        <a href="#" class="department-card-details-btn">View Courses <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            
+                <div class="card department-card" data-department="Islamic studies (ENG)">
+                    <div class="department-card-img">
+                        <img src="images/faculties/islamic_studies.jpg" alt="Islamic Studies (ENG) Department">
+                    </div>
+                    <div class="department-card-body">
+                        <h5 class="department-card-title">Islamic Studies (ENG)</h5>
+                        <p class="department-card-text">Study the history, culture, and faith of Islam in English.</p>
+                        <a href="#" class="department-card-details-btn">View Courses <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            
+                <div class="card department-card" data-department="Islamic Studies (FRE)">
+                    <div class="department-card-img">
+                        <img src="images/faculties/islamic_studies.jpg" alt="Islamic Studies (FRE) Department">
+                    </div>
+                    <div class="department-card-body">
+                        <h5 class="department-card-title">Islamic Studies (FRE)</h5>
+                        <p class="department-card-text">Etudiez l'histoire, la culture et la foi de l'Islam en français.</p>
+                        <a href="#" class="department-card-details-btn">View Courses <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            
+                <div class="card department-card" data-department="African Languages">
+                    <div class="department-card-img">
+                        <img src="images/faculties/african_languages.jpg" alt="African Languages Department">
+                    </div>
+                    <div class="department-card-body">
+                        <h5 class="department-card-title">African Languages</h5>
+                        <p class="department-card-text">Explore the rich tapestry of African languages and cultures.</p>
+                        <a href="#" class="department-card-details-btn">View Courses <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            
+                <div class="card department-card" data-department="English Languages">
+                    <div class="department-card-img">
+                        <img src="images/faculties/english_languages.jpg" alt="English Languages Department">
+                    </div>
+                    <div class="department-card-body">
+                        <h5 class="department-card-title">English Literature</h5>
+                        <p class="department-card-text">Dive into the world of English literature, linguistics, and writing.</p>
+                        <a href="#" class="department-card-details-btn">View Courses <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- More Department Cards Here -->
+    
+            </div>
+    
+        </div>
+    
+        </section>
+
+      <!-- Page Footer-->
+      <footer class="section section-fluid footer-minimal context-dark">
+        <div class="bg-gray-15">
+          <div class="container-fluid">
+            <div class="footer-minimal-inset oh">
+              <ul class="footer-list-category-2">
+                <li><a href="#">CourseEbook/</a></li>
+                <li><a href="#">CourseEbook/</a></li>
+                <li><a href="#">CourseEbook/</a></li>
+                <li><a href="#">CourseEbook/</a></li>
+                <li><a href="#">CourseEbook/</a></li>
+              </ul>
+            </div>
+            <div class="footer-minimal-bottom-panel text-sm-left">
+              <div class="row row-10 align-items-md-center">
+                <div class="col-sm-6 col-md-4 text-sm-right text-md-center">
+                  <div>
+                    <ul class="list-inline list-inline-sm footer-social-list-2">
+                      <li><a class="icon fa fa-facebook" href="#"></a></li>
+                      <li><a class="icon fa fa-twitter" href="#"></a></li>
+                      <li><a class="icon fa fa-google-plus" href="#"></a></li>
+                      <li><a class="icon fa fa-instagram" href="#"></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-4 order-sm-first">
+                  <!-- Rights-->
+                  <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span> <span>CourseEbook</span>
+                  </p>
+                </div>
+                <div class="col-sm-6 col-md-4 text-md-right"><span>All rights reserved.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+      
+    </div>
+    
+    <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+  }
+
+  .container {
+      margin-top: 3rem;
+  }
+
+  .department-card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%; /* Ensure cards take up the full height of their grid area */
+  }
+
+  .department-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .department-card-img {
+      height: 200px; /* Adjusted for consistent image height */
+      overflow: hidden;
+  }
+
+  .department-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Maintain aspect ratio and cover the area */
+      transition: transform 0.3s ease;
+  }
+
+  .department-card:hover .department-card-img img {
+      transform: scale(1.1);
+  }
+
+  .department-card-body {
+      padding: 1.5rem;
+      flex-grow: 1; /* Card body takes up available space */
+      display: flex;
+      flex-direction: column;
+  }
+
+  .department-card-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+  }
+
+  .department-card-text {
+      font-size: 1rem;
+      color: #6c757d;
+      flex-grow: 1; /* Push the details button to the bottom */
+  }
+
+  .department-card-details-btn {
+      background-color: #6689FF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+      margin-top: 1rem;
+  }
+
+  .department-card-details-btn:hover {
+      background-color: #0056b3;
+  }
+
+  /* Responsive Grid Layout */
+  .department-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+  }
+
+  /* Search Input Style (Simple) */
+  #searchInput {
+      width: 100%;
+      max-width: 400px;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      outline: none;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      background: #f5f5f5; /* Matching previous input field style */
+      color: #333; /* Matching text color */
+      transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+#searchInput:focus {
+background: #e0e0e0; /* Lighter shade on focus */
+box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+</style>
+
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+    <!-- coded by Himic-->
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const searchInput = document.getElementById('searchInput');
+          const departmentGrid = document.getElementById('departmentGrid');
+          const departmentCards = departmentGrid.querySelectorAll('.department-card');
+
+          searchInput.addEventListener('input', function(e) {
+              const searchTerm = e.target.value.toLowerCase();
+
+              departmentCards.forEach(card => {
+                  const departmentName = card.dataset.department.toLowerCase();
+
+                  if (departmentName.includes(searchTerm)) {
+                      card.style.display = 'block';
+                  } else {
+                      card.style.display = 'none';
+                  }
+              });
+          });
+      });
+  </script>
+  </body>
+</html>

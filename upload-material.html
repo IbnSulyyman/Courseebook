@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourseEbook - Contribute Materials</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            margin-bottom: 1.75rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            border-radius: 0.25rem;
+        }
+
+        .btn-primary {
+            width: 100%; /* Full width button */
+            padding: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #007bff;
+        }
+
+        .fine-print {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+          /*Override style.css and bootstrap*/
+          body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            margin-bottom: 1.75rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            border-radius: 0.25rem;
+        }
+
+        .btn-primary {
+            width: 100%; /* Full width button */
+            padding: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #007bff;
+        }
+
+        .fine-print {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 class="section-title">Contribute Materials</h2>
+        <p class="text-muted text-center">Share your academic resources to help fellow students succeed!</p>
+
+        <form id="uploadForm" action="#" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="faculty" class="form-label">Faculty</label>
+                <select class="form-control" id="faculty" required>
+                    <option value="">Select Faculty</option>
+                    <option value="engineering">Faculty of Engineering</option>
+                    <option value="medicine">Faculty of Medicine</option>
+                    <option value="science">Faculty of Science</option>
+                    <option value="arts">Faculty of Arts</option>
+                    <option value="commerce">Faculty of Commerce</option>
+                    <!-- Add more faculties here -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="department" class="form-label">Department</label>
+                <select class="form-control" id="department" required>
+                    <option value="">Select Department</option>
+                    <!-- Department options will be populated dynamically with JavaScript -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="academicYear" class="form-label">Academic Year</label>
+                <select class="form-control" id="academicYear" required>
+                    <option value="">Select Academic Year</option>
+                    <option value="1">Year 1</option>
+                    <option value="2">Year 2</option>
+                    <option value="3">Year 3</option>
+                    <option value="4">Year 4</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="courseName" class="form-label">Course Name</label>
+                <input type="text" class="form-control" id="courseName" placeholder="Enter Course Name" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="materialType" class="form-label">Material Type</label>
+                <select class="form-control" id="materialType" required>
+                    <option value="">Select Material Type</option>
+                    <option value="pdf">PDF</option>
+                    <option value="lecture_slides">Lecture Slides</option>
+                    <option value="video_tutorial">Video Tutorial</option>
+                    <option value="past_paper">Past Question Paper</option>
+                    <option value="research_paper">Research Paper</option>
+                     <!-- Add more material types here -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fileUpload" class="form-label">Upload Material</label>
+                <div class="text-center">
+                    <i class="fas fa-upload upload-icon"></i>
+                    <input type="file" class="form-control-file" id="fileUpload" name="fileUpload" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Add a brief description about the material."></textarea>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit Material</button>
+            </div>
+             <p class="fine-print text-center">By submitting, you agree to share this material with the CourseEbook community. Upload material to boost the world with kwnowledge.</p>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample Department Data (Replace with your dynamic data loading)
+            const departments = {
+                engineering: ["Computer Engineering", "Electrical Engineering", "Civil Engineering", "Mechanical Engineering"],
+                medicine: ["General Medicine", "Surgery", "Pediatrics", "Cardiology"],
+                science: ["Physics", "Chemistry", "Biology", "Mathematics"],
+                arts: ["Literature", "History", "Philosophy", "Fine Arts"],
+                commerce: ["Marketing", "Finance", "Management", "Accounting"]
+                // Add more faculties and departments here
+            };
+
+            const facultySelect = document.getElementById('faculty');
+            const departmentSelect = document.getElementById('department');
+
+            // Function to populate department options based on selected faculty
+            function populateDepartments(selectedFaculty) {
+                departmentSelect.innerHTML = '<option value="">Select Department</option>'; // Reset options
+
+                if (departments[selectedFaculty]) {
+                    departments[selectedFaculty].forEach(department => {
+                        const option = document.createElement('option');
+                        option.value = department.toLowerCase().replace(/ /g, '_');
+                        option.textContent = department;
+                        departmentSelect.appendChild(option);
+                    });
+                }
+            }
+
+            // Event listener for faculty selection
+            facultySelect.addEventListener('change', function() {
+                populateDepartments(this.value); // 'this' refers to the faculty select element
+            });
+
+        });
+    </script>
+</body>
+
+</html>

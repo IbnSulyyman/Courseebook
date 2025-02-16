@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CourseEbook - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js"> <!-- Chart.js library  -->
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+            color: #333;
+        }
+
+        .container {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            margin-bottom: 1.75rem;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        /* Dashboard Card Styling */
+        .dashboard-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: #fff;
+        }
+
+        .dashboard-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .dashboard-card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #007bff; /* BNB primary color */
+        }
+
+        .dashboard-card-description {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        /* Table Styling */
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            background-color: #f0f2f5;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table th,
+        .table td {
+            font-size: 0.9rem;
+            vertical-align: middle;
+        }
+
+        /* Chart Styling */
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        /*Form Style*/
+          /* Search Input Style (Simple) */
+        .search-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .text-muted {
+            color: #6c757d;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 class="section-title">Admin Dashboard</h2>
+
+        <div class="row">
+            <!-- Analytics Cards -->
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <h3 class="dashboard-card-title">Total Users</h3>
+                    <p class="dashboard-card-value">1,250</p>
+                    <p class="dashboard-card-description">Registered users on the platform</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <h3 class="dashboard-card-title">Total Content</h3>
+                    <p class="dashboard-card-value">850</p>
+                    <p class="dashboard-card-description">Total resources uploaded</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="dashboard-card">
+                    <h3 class="dashboard-card-title">Average Engagement</h3>
+                    <p class="dashboard-card-value">4.5 <i class="fas fa-star small text-warning"></i></p>
+                    <p class="dashboard-card-description">Average rating of resources</p>
+                </div>
+            </div>
+        </div>
+
+         <!-- User Contributions Over Time (Chart) -->
+         <div class="row">
+            <div class="col-md-8">
+                <div class="dashboard-card">
+                    <h3 class="dashboard-card-title">User Contributions Over Time</h3>
+                    <div class="chart-container">
+                        <canvas id="userContributionsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                 <div class="dashboard-card">
+                  <h3 class="dashboard-card-title">Recent Users</h3>
+                 <div class="table-responsive">
+                    <table class="table">
+                         <thead>
+                             <tr>
+                               <th>Name</th>
+                               <th>Email</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr>
+                                 <td>John Doe</td>
+                                 <td>john.doe@example.com</td>
+                             </tr>
+                            <tr>
+                                 <td>Mona Ahmed</td>
+                                 <td>mona.ahmed@example.com</td>
+                             </tr>
+                             <tr>
+                                 <td>Ali Hassan</td>
+                                 <td>ali.hassan@example.com</td>
+                             </tr>
+                             <tr>
+                                 <td>Sarah Khalil</td>
+                                 <td>sarah.khalil@example.com</td>
+                             </tr>
+                             <tr>
+                                 <td>Ahmed Said</td>
+                                 <td>ahmed.said@example.com</td>
+                             </tr>
+                         </tbody>
+                      </table>
+                  </div>
+                 </div>
+            </div>
+          </div>
+
+
+          <!-- Recent Uploads Table -->
+          <div class="row">
+            <div class="col-12">
+                <div class="dashboard-card">
+                    <h3 class="dashboard-card-title">Recent Uploads</h3>
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>File Name</th>
+                                <th>Faculty</th>
+                                <th>Department</th>
+                                <th>Uploaded Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Calculus Lecture Notes.pdf</td>
+                                <td>Engineering</td>
+                                <td>Mathematics</td>
+                                <td>October 27, 2023</td>
+                            </tr>
+                            <tr>
+                                <td>Anatomy Slides.pptx</td>
+                                <td>Medicine</td>
+                                <td>Anatomy</td>
+                                <td>October 26, 2023</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing Strategies.docx</td>
+                                <td>Commerce</td>
+                                <td>Marketing</td>
+                                <td>October 25, 2023</td>
+                            </tr>
+                            <!-- Add more table rows -->
+                        </tbody>
+                    </table>
+                   </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Add Chart.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+            // Sample Data for Chart (Replace with your actual data)
+            const userContributionData = {
+                labels: ['October', 'November', 'December', 'January', 'February'],
+                datasets: [{
+                    label: 'User Uploads',
+                    data: [50, 75, 100, 80, 120], // Example data
+                    backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                    borderColor: '#007bff',
+                    borderWidth: 1
+                }]
+            };
+
+            // Chart Configuration
+            const chartConfig = {
+                type: 'line',
+                data: userContributionData,
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            };
+
+            // Initialize Chart
+            const userContributionsChartCanvas = document.getElementById('userContributionsChart').getContext('2d');
+            const userContributionsChart = new Chart(userContributionsChartCanvas, chartConfig);
+        });
+    </script>
+
+</body>
+
+</html>
