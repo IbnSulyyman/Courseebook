@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prank Button</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      margin-top: 100px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #6689ff;
+      color: white;
+    }
+
+    .yes-button {
+      background-color: #6689ff;
+    }
+
+    .no-button {
+      background-color: #f44336;
+      position: absolute;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .popup-content {
+      position: relative; /* Important: makes child absolute positions relative to this container */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      min-width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Click Me!</h1>
+  <button id="prankButton">Here</button>
+</div>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <!-- First question is hardcoded -->
+    <h2 id="popupQuestion">Do you like this Design?</h2>
+    <button class="yes-button" id="yesButton">Yes</button>
+    <button class="no-button" id="noButton">No</button>
+  </div>
+</div>
+
+<script>
+  const prankButton = document.getElementById("prankButton");
+  const popup = document.getElementById("popup");
+  const popupQuestion = document.getElementById("popupQuestion");
+  const yesButton = document.getElementById("yesButton");
+  const noButton = document.getElementById("noButton");
+
+  // Subsequent questions (the first hardcoded question remains)
+  const questions = [
+    "Do you like Adam😶?",
+    "Really, really sure?",
+    "Would you like to tell him you love him😁😅?"
+  ];
+
+  const redirectURL = "https://wa.me/201276648193?text=I%20Love%20You";
+  let questionCount = 0;
+
+  function showPopup() {
+    popup.style.display = "block";
+  }
+
+  function hidePopup() {
+    popup.style.display = "none";
+    questionCount = 0;
+    popupQuestion.textContent = "Do you like this Design?";
+  }
+
+  function moveNoButton() {
+    // Get the container for proper mobile positioning
+    const popupContent = document.querySelector(".popup-content");
+    const contentRect = popupContent.getBoundingClientRect();
+    const buttonRect = noButton.getBoundingClientRect();
+
+    // Calculate maximum positions within the container
+    const maxX = contentRect.width - buttonRect.width;
+    const maxY = contentRect.height - buttonRect.height;
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+  }
+
+  prankButton.addEventListener("click", showPopup);
+
+  yesButton.addEventListener("click", () => {
+    if (questionCount < questions.length) {
+      popupQuestion.textContent = questions[questionCount];
+      questionCount++;
+    } else {
+      window.location.href = redirectURL;
+    }
+  });
+
+  // For desktop devices
+  noButton.addEventListener("mouseover", moveNoButton);
+  // For mobile devices: use touchstart and click
+  noButton.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    moveNoButton();
+  });
+  noButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    moveNoButton();
+  });
+
+  // Optional: close popup if user clicks outside the content
+  popup.addEventListener("click", (event) => {
+    if (event.target === popup) {
+      hidePopup();
+    }
+  });
+</script>
+
+</body>
+</html>
