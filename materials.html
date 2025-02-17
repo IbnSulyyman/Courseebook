@@ -1,239 +1,337 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CourseEbook - Course Materials</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css"> <!-- Your Original CSS -->
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif; /* Fallback in case your stylesheet has issues */
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        .container {
-            margin-top: 2rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 1.75rem;
-        }
-
-        .course-materials-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .course-material-item {
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            margin-bottom: 1.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* File Type Icons (Example) - Adapt as needed from Font Awesome */
-        .file-icon {
-            font-size: 2.5rem;
-            margin-right: 1.5rem;
-            color: #495057; /* Neutral color */
-        }
-
-        .file-info {
-            flex-grow: 1;
-        }
-
-        .file-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .file-meta {
-            font-size: 0.85rem;
-            color: #6c757d;
-        }
-
-        .file-actions a {
-            margin-left: 0.75rem;
-        }
-
-        /* Specific File Type Styles */
-
-        /* PDF */
-        .file-pdf .file-icon {
-            color: #dc3545; /* Red for PDFs */
-        }
-
-        /* Audio */
-        .file-audio .file-icon {
-            color: #007bff; /* Blue for Audio */
-        }
-
-        /* Video (YouTube) */
-        .file-youtube .file-icon {
-            color: #e83e8c; /* Pink for YouTube */
-        }
-
-        /* Spreadsheet */
-        .file-spreadsheet .file-icon {
-            color: #28a745; /* Green for Spreadsheet */
-        }
-
-        /* Document */
-        .file-document .file-icon {
-            color: #17a2b8; /* Cyan for Documents */
-        }
-
-        /* Image */
-        .file-image .file-icon {
-            color: #ffc107; /* Yellow for Images */
-        }
-        /*File size*/
-        .file-size {
-            float: left;
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-        }
-
-        /*Responsive design*/
-        @media (max-width: 768px) {
-           .course-material-item {
-           display: block;
-          }
-          .file-actions a{
-              display: inline-block;
-              margin: 5px;
-          }
-          .file-size {
-            width: 100%;
-            margin-bottom: 10px;
-          }
-           .file-icon {
-            margin-bottom: 10px;
-           }
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="container">
-        <h2 class="section-title text-center">Course Materials</h2>
-        <p class="text-muted text-center">Access all learning resources for this course.</p>
-
-        <ul class="course-materials-list">
-
-            <!-- Example Material 1: PDF Document -->
-            <li class="course-material-item file-pdf">
-                 <div class="file-size">
-                    <i class="fas fa-file-pdf file-icon"></i>
-                     <span class="file-size-text">5MB</span>
-                </div>
-                <div class="file-info">
-                    <h5 class="file-title">Lecture Notes - Week 1</h5>
-                    <p class="file-meta">PDF Document | Added: October 26, 2023</p>
-                </div>
-                <div class="file-actions">
-                    <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View</a>
-                    <a href="#" class="btn btn-sm btn-secondary"><i class="fas fa-download"></i> Download</a>
-                </div>
-            </li>
-
-            <!-- Example Material 2: Audio File -->
-            <li class="course-material-item file-audio">
-                 <div class="file-size">
-                     <i class="fas fa-file-audio file-icon"></i>
-                    <span class="file-size-text">15MB</span>
-                </div>
-                <div class="file-info">
-                    <h5 class="file-title">Podcast - Introduction to the Topic</h5>
-                    <p class="file-meta">Audio File | Added: October 25, 2023</p>
-                </div>
-                <div class="file-actions">
-                    <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-play"></i> Play</a>
-                    <a href="#" class="btn btn-sm btn-secondary"><i class="fas fa-download"></i> Download</a>
-                </div>
-            </li>
-
-            <!-- Example Material 3: YouTube Video -->
-            <li class="course-material-item file-youtube">
-                 <div class="file-size">
-                     <i class="fab fa-youtube file-icon"></i>
-                    <span class="file-size-text">N/A</span>
-                </div>
-                <div class="file-info">
-                    <h5 class="file-title">Video Lecture - Topic Deep Dive</h5>
-                    <p class="file-meta">YouTube Video | Added: October 24, 2023</p>
-                </div>
-                <div class="file-actions">
-                    <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-external-link-alt"></i> Watch on YouTube</a>
-                </div>
-            </li>
-
-            <!-- Example Material 4: Excel Spreadsheet -->
-            <li class="course-material-item file-spreadsheet">
-                 <div class="file-size">
-                     <i class="fas fa-file-excel file-icon"></i>
-                    <span class="file-size-text">2MB</span>
-                </div>
-                <div class="file-info">
-                    <h5 class="file-title">Data Analysis Spreadsheet</h5>
-                    <p class="file-meta">Excel Spreadsheet | Added: October 23, 2023</p>
-                </div>
-                <div class="file-actions">
-                    <a href="#" class="btn btn-sm btn-secondary"><i class="fas fa-download"></i> Download</a>
-                </div>
-            </li>
-
-            <!-- Example Material 5: Word Document -->
-            <li class="course-material-item file-document">
-               <div class="file-size">
-                     <i class="fas fa-file-word file-icon"></i>
-                   <span class="file-size-text">8MB</span>
-                </div>
-                <div class="file-info">
-                    <h5 class="file-title">Assignment Instructions</h5>
-                    <p class="file-meta">Word Document | Added: October 22, 2023</p>
-                </div>
-                <div class="file-actions">
-                    <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View</a>
-                    <a href="#" class="btn btn-sm btn-secondary"><i class="fas fa-download"></i> Download</a>
-                </div>
-            </li>
-
-            <!-- Example Material 6: Image File -->
-            <li class="course-material-item file-image">
-                  <div class="file-size">
-                       <i class="fas fa-file-image file-icon"></i>
-                    <span class="file-size-text">1MB</span>
-                </div>
-                <div class="file-info">
-                    <h5 class="file-title">Diagram of Key Concept</h5>
-                    <p class="file-meta">Image File | Added: October 21, 2023</p>
-                </div>
-                <div class="file-actions">
-                    <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View</a>
-                    <a href="#" class="btn btn-sm btn-secondary"><i class="fas fa-download"></i> Download</a>
-                </div>
-            </li>
-             <!-- Add more file types -->
-        </ul>
+<html class="wide wow-animation" lang="en">
+  <head>
+    <title>CourseEbook</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <link rel="icon" sizes="512x512" href="images/CourseEbookIcon.png" type="image/x-icon">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:400,500,600%7CTeko:300,400,500%7CMaven+Pro:500">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
+  </head>
+  <body>
+    <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <div class="preloader">
+      <div class="preloader-body">
+        <div class="cssload-container"><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div class="page">
+        <!-- Page Header-->
+        <header class="section page-header">
+          <!-- RD Navbar-->
+          <div class="rd-navbar-wrap">
+            <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+              <div class="rd-navbar-main-outer">
+                <div class="rd-navbar-main">
+                  <!-- RD Navbar Panel-->
+                  <div class="rd-navbar-panel">
+                    <!-- RD Navbar Toggle-->
+                    <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                    <!-- RD Navbar Brand-->
+                    <div class="rd-navbar-brand"><a class="brand" href="home.html"><img src="images/CourseEbook.png" alt="" width="223" height="50"/></a></div>
+                  </div>
+                  <div class="rd-navbar-main-element">
+                    <div class="rd-navbar-nav-wrap">
+                      <!-- RD Navbar Share-->
+                      <div class="rd-navbar-share fl-bigmug-line-share27" data-rd-navbar-toggle=".rd-navbar-share-list">
+                        <ul class="list-inline rd-navbar-share-list">
+                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-facebook" href="#"></a></li>
+                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-twitter" href="#"></a></li>
+                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-google-plus" href="#"></a></li>
+                          <li class="rd-navbar-share-list-item"><a class="icon fa fa-instagram" href="#"></a></li>
+                        </ul>
+                      </div>
+                      <ul class="rd-navbar-nav">
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="home.html">Home</a></li>
+                        <li class="rd-nav-item active"><a class="rd-nav-link" href="universities.html">Universities</a></li>
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="upload-material.html">Upload materials</a></li>
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="www.courseebook/discord.com">Community</a></li>
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="">About us</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </header>
 
-</body>
+        <!-- Page Content-->
+         <section>
+          <div class="container">
+            <h2 class="section-title text-center">Course Materials</h2>
+            <p class="text-muted text-center">Access all learning resources for this course.</p>
+    
+            <ul class="course-materials-list">
+    
+                <!-- Example Material 1: PDF Document -->
+                <li class="course-material-item file-pdf">
+                     <div class="file-size">
+                        <i class="fas fa-file-pdf file-icon"></i>
+                         <span class="file-size-text">5MB</span>
+                    </div>
+                    <div class="file-info">
+                        <h5 class="file-title">Lecture Notes - Week 1</h5>
+                        <p class="file-meta">PDF Document | Added: October 26, 2023</p>
+                    </div>
+                    <div class="file-actions">
+                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View</a>
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+    
+                <!-- Example Material 2: Audio File -->
+                <li class="course-material-item file-audio">
+                     <div class="file-size">
+                         <i class="fas fa-file-audio file-icon"></i>
+                        <span class="file-size-text">15MB</span>
+                    </div>
+                    <div class="file-info">
+                        <h5 class="file-title">Podcast - Introduction to the Topic</h5>
+                        <p class="file-meta">Audio File | Added: October 25, 2023</p>
+                    </div>
+                    <div class="file-actions">
+                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-play"></i> Play</a>
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+    
+                <!-- Example Material 3: YouTube Video -->
+                <li class="course-material-item file-youtube">
+                     <div class="file-size">
+                         <i class="fab fa-youtube file-icon"></i>
+                        <span class="file-size-text">N/A</span>
+                    </div>
+                    <div class="file-info">
+                        <h5 class="file-title">Video Lecture - Topic Deep Dive</h5>
+                        <p class="file-meta">YouTube Video | Added: October 24, 2023</p>
+                    </div>
+                    <div class="file-actions">
+                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-external-link-alt"></i> Watch on YouTube</a>
+                    </div>
+                </li>
+    
+                <!-- Example Material 4: Excel Spreadsheet -->
+                <li class="course-material-item file-spreadsheet">
+                     <div class="file-size">
+                         <i class="fas fa-file-excel file-icon"></i>
+                        <span class="file-size-text">2MB</span>
+                    </div>
+                    <div class="file-info">
+                        <h5 class="file-title">Data Analysis Spreadsheet</h5>
+                        <p class="file-meta">Excel Spreadsheet | Added: October 23, 2023</p>
+                    </div>
+                    <div class="file-actions">
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+    
+                <!-- Example Material 5: Word Document -->
+                <li class="course-material-item file-document">
+                   <div class="file-size">
+                         <i class="fas fa-file-word file-icon"></i>
+                       <span class="file-size-text">8MB</span>
+                    </div>
+                    <div class="file-info">
+                        <h5 class="file-title">Assignment Instructions</h5>
+                        <p class="file-meta">Word Document | Added: October 22, 2023</p>
+                    </div>
+                    <div class="file-actions">
+                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View</a>
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+    
+                <!-- Example Material 6: Image File -->
+                <li class="course-material-item file-image">
+                      <div class="file-size">
+                           <i class="fas fa-file-image file-icon"></i>
+                        <span class="file-size-text">1MB</span>
+                    </div>
+                    <div class="file-info">
+                        <h5 class="file-title">Diagram of Key Concept</h5>
+                        <p class="file-meta">Image File | Added: October 21, 2023</p>
+                    </div>
+                    <div class="file-actions">
+                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View</a>
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </li>
+                 <!-- Add more file types -->
+            </ul>
+        </div>
+    
+         </section>
+
+
+
+      <!-- Page Footer-->
+      <footer class="section section-fluid footer-minimal context-dark">
+        <div class="bg-gray-15">
+          <div class="container-fluid">
+            <div class="footer-minimal-inset oh">
+              <ul class="footer-list-category-2">
+                <li><a href="#">CourseEbook/</a></li>
+                <li><a href="#">CourseEbook/</a></li>
+                <li><a href="#">CourseEbook/</a></li>
+                <li><a href="#">CourseEbook/</a></li>
+                <li><a href="#">CourseEbook/</a></li>
+              </ul>
+            </div>
+            <div class="footer-minimal-bottom-panel text-sm-left">
+              <div class="row row-10 align-items-md-center">
+                <div class="col-sm-6 col-md-4 text-sm-right text-md-center">
+                  <div>
+                    <ul class="list-inline list-inline-sm footer-social-list-2">
+                      <li><a class="icon fa fa-facebook" href="#"></a></li>
+                      <li><a class="icon fa fa-twitter" href="#"></a></li>
+                      <li><a class="icon fa fa-google-plus" href="#"></a></li>
+                      <li><a class="icon fa fa-instagram" href="#"></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-4 order-sm-first">
+                  <!-- Rights-->
+                  <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span> <span>CourseEbook</span>
+                  </p>
+                </div>
+                <div class="col-sm-6 col-md-4 text-md-right"><span>All rights reserved.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+      
+    </div>
+
+    <style>
+      .container {
+          margin-top: 2rem;
+      }
+
+      .section-title {
+          font-size: 2rem;
+          margin-bottom: 1.75rem;
+      }
+
+      .course-materials-list {
+          list-style: none;
+          padding: 0;
+      }
+
+      .course-material-item {
+          background-color: #fff;
+          border-radius: 12px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          padding: 1.5rem;
+          margin-bottom: 1.25rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+      }
+
+      /* File Type Icons (Example) - Adapt as needed from Font Awesome */
+      .file-icon {
+          font-size: 2.5rem;
+          margin-right: 1.5rem;
+          color: #495057; /* Neutral color */
+      }
+
+      .file-info {
+          flex-grow: 1;
+      }
+
+      .file-title {
+          font-size: 1.1rem;
+          font-weight: 500;
+      }
+
+      .file-meta {
+          font-size: 0.85rem;
+          color: #6c757d;
+      }
+
+      .file-actions a {
+          margin-left: 0.75rem;
+      }
+
+      /* Specific File Type Styles */
+
+      /* PDF */
+      .file-pdf .file-icon {
+          color: #dc3545; /* Red for PDFs */
+      }
+
+      /* Audio */
+      .file-audio .file-icon {
+          color: #007bff; /* Blue for Audio */
+      }
+
+      /* Video (YouTube) */
+      .file-youtube .file-icon {
+          color: #e83e8c; /* Pink for YouTube */
+      }
+
+      /* Spreadsheet */
+      .file-spreadsheet .file-icon {
+          color: #28a745; /* Green for Spreadsheet */
+      }
+
+      /* Document */
+      .file-document .file-icon {
+          color: #17a2b8; /* Cyan for Documents */
+      }
+
+      /* Image */
+      .file-image .file-icon {
+          color: #ffc107; /* Yellow for Images */
+      }
+      /*File size*/
+      .file-size {
+          float: left;
+          font-weight: bold;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+      }
+
+      /*Responsive design*/
+      @media (max-width: 768px) {
+         .course-material-item {
+         display: block;
+        }
+        .file-actions a{
+            display: inline-block;
+            margin: 5px;
+        }
+        .file-size {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+         .file-icon {
+          margin-bottom: 10px;
+         }
+      }
+  </style>
+
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+    <!-- coded by Himic-->
+
+  </body>
 </html>
