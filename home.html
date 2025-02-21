@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" sizes="512x512" href="images/CourseEbookIcon.png" type="image/x-icon">
     <!-- Stylesheets-->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:400,500,600%7CTeko:300,400,500%7CMaven+Pro:500">
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -68,10 +68,10 @@
         <section class="main-content">
             <section class="quick-start">
               <div class="div-header">
-                <img src="images/profile-image.jpg" alt="Profile" class="profile-image">
+              <!--<img src="images/profile-image.jpg" alt="Profile" class="profile-image">-->
                 <div class="welcome-text">
-                    <h1>Welcome Adam!</h1>
-                    <p>Hi Adam, ready to ace your Legal translation quizzes? Why not keep studying or share with friends?</p>
+                  <h1 id="welcomeMessage">Welcome!</h1>
+                  <p>Hi <Span id="userNamePlaceholder">there</Span>, ready to ace your Legal translation quizzes? Why not keep studying or share with friends?</p>
                 </div>
               </div>
                 <h2>Quick start</h2>
@@ -92,6 +92,7 @@
                         <div class="feature-icon"></div>
                         <h3>Upload Material</h3>
                         <p>Help others by contibuting to cummunity.</p>
+                        <a href="upload-material.html" class="button button-primary button-ujarak">upload</a> 
                     </article>
                 </div>
             </section>
@@ -520,5 +521,30 @@
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
     <!-- coded by Himic-->
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+          const userId = sessionStorage.getItem('userId');
+          const userNamePlaceholderSpan = document.getElementById('userNamePlaceholder');
+
+          if (userId) {
+              try {
+                  const response = await fetch(`http://localhost:3000/get-user-name/${userId}`);
+                  if (response.ok) {
+                      const data = await response.json();
+                      userNamePlaceholderSpan.textContent = data.name || 'User'; // Use 'User' as default if name is not returned
+                  } else {
+                      console.error("Failed to fetch user name:", response.statusText);
+                      userNamePlaceholderSpan.textContent = 'User'; // Default name in case of error
+                  }
+              } catch (error) {
+                  console.error("Error fetching user name:", error);
+                  userNamePlaceholderSpan.textContent = 'User'; // Default name in case of error
+              }
+          } else {
+              userNamePlaceholderSpan.textContent = 'there'; // Default if not logged in
+          }
+      });
+  </script>
+     
   </body>
 </html>

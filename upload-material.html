@@ -1,3 +1,4 @@
+<!-- upload-material.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CourseEbook - Contribute Materials</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="css/style.css">
   <style>
@@ -56,36 +57,36 @@
 <body>
   <div class="container">
     <a href="home.html">
-        <img src="images/CourseEbook.png" alt="CourseEbook Logo" class="img-fluid" style="max-width: 200px;">
-      </a>
+      <img src="images/CourseEbook.png" alt="CourseEbook Logo" class="img-fluid" style="max-width: 200px;">
+    </a>
     <h2 class="section-title">Contribute Materials</h2>
     <p class="text-muted text-center">Share your academic resources to help fellow students succeed!</p>
-    <form id="uploadForm" action="#" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="university" class="form-label">University</label>
-            <select class="form-control" id="university" required>
-              <option value="">Select University</option>
-              <option value="al-azhar-university">Al-Azhar University</option>
-              <option value="cairo_university">Cairo University</option>
-              <option value="alexandria_university">Alexandria University</option>
-              <option value="ain_shams_university">Ain Shams University</option>
-              <option value="zagazig_university">Zagazig University</option>
-              <option value="assuit_university">Assiut University</option>
-              <option value="beni_suef_university">Beni Suef University</option>
-              <option value="menoufia_university">Menoufia University</option>
-              <option value="tanta_university">Tanta University</option>
-              <option value="sohag_university">Sohag University</option>
-              <option value="suez_canal_university">Suez Canal University</option>
-              <option value="6_october_university">6 October University</option>
-              <option value="american_university_cairo">American University in Cairo</option>
-              <option value="british_university_egypt">British University in Egypt</option>
-              <option value="german_university_egypt">German University in Egypt</option>
-              <!-- Add more Egyptian universities as needed -->
-            </select>
-          </div>
+    <form id="uploadForm" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="university" class="form-label">University</label>
+        <select class="form-control" id="university" name="university" required>
+          <option value="">Select University</option>
+          <option value="al-azhar-university">Al-Azhar University</option>
+          <option value="cairo_university">Cairo University</option>
+          <option value="alexandria_university">Alexandria University</option>
+          <option value="ain_shams_university">Ain Shams University</option>
+          <option value="zagazig_university">Zagazig University</option>
+          <option value="assuit_university">Assiut University</option>
+          <option value="beni_suef_university">Beni Suef University</option>
+          <option value="menoufia_university">Menoufia University</option>
+          <option value="tanta_university">Tanta University</option>
+          <option value="sohag_university">Sohag University</option>
+          <option value="suez_canal_university">Suez Canal University</option>
+          <option value="6_october_university">6 October University</option>
+          <option value="american_university_cairo">American University in Cairo</option>
+          <option value="british_university_egypt">British University in Egypt</option>
+          <option value="german_university_egypt">German University in Egypt</option>
+          <!-- Add more Egyptian universities as needed -->
+        </select>
+      </div>
       <div class="form-group">
         <label for="faculty" class="form-label">Faculty</label>
-        <select class="form-control" id="faculty" required>
+        <select class="form-control" id="faculty" name="faculty" required>
           <option value="">Select Faculty</option>
           <option value="engineering">Faculty of Engineering</option>
           <option value="medicine">Faculty of Medicine</option>
@@ -97,14 +98,14 @@
       </div>
       <div class="form-group">
         <label for="department" class="form-label">Department</label>
-        <select class="form-control" id="department" required>
+        <select class="form-control" id="department" name="department" required>
           <option value="">Select Department</option>
           <!-- Department options will be populated dynamically with JavaScript -->
         </select>
       </div>
       <div class="form-group">
         <label for="academicYear" class="form-label">Academic Year</label>
-        <select class="form-control" id="academicYear" required>
+        <select class="form-control" id="academicYear" name="academicYear" required>
           <option value="">Select Academic Year</option>
           <option value="1">Year 1</option>
           <option value="2">Year 2</option>
@@ -114,11 +115,11 @@
       </div>
       <div class="form-group">
         <label for="courseName" class="form-label">Course Name</label>
-        <input type="text" class="form-control" id="courseName" placeholder="Enter Course Name" required>
+        <input type="text" class="form-control" id="courseName" name="courseName" placeholder="Enter Course Name" required>
       </div>
       <div class="form-group">
         <label for="materialType" class="form-label">Material Type</label>
-        <select class="form-control" id="materialType" required>
+        <select class="form-control" id="materialType" name="materialType" required>
           <option value="">Select Material Type</option>
           <option value="pdf">PDF</option>
           <option value="lecture_slides">Lecture Slides</option>
@@ -138,71 +139,94 @@
       </div>
       <div class="form-group">
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" rows="3" placeholder="Add a brief description about the material."></textarea>
+        <textarea class="form-control" id="materialDescription" name="materialDescription" rows="3" placeholder="Add a brief description about the material." ></textarea>
       </div>
       <div class="text-center">
-        <button href="" type="submit" class="btn btn-primary">Submit Material</button>
+        <button type="submit" class="btn btn-primary" id="submitButton">Submit Material</button>
       </div>
       <p class="fine-print text-center">
         By submitting, you agree to share this material with the CourseEbook community. Upload material to boost the world with knowledge.
       </p>
     </form>
   </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Sample Department Data (Replace with your dynamic data loading)
-      const departments = {
-        engineering: ["Computer Engineering", "Electrical Engineering", "Civil Engineering", "Mechanical Engineering"],
-        medicine: ["General Medicine", "Surgery", "Pediatrics", "Cardiology"],
-        science: ["Physics", "Chemistry", "Biology", "Mathematics"],
-        arts: ["Literature", "History", "Philosophy", "Fine Arts"],
-        commerce: ["Marketing", "Finance", "Management", "Accounting"]
-        // Add more faculties and departments here
-      };
+    
 
-      const facultySelect = document.getElementById('faculty');
-      const departmentSelect = document.getElementById('department');
+document.addEventListener('DOMContentLoaded', function() {
+	// Sample Department Data (Replace with your dynamic data loading)
+	const departments = {
+		engineering: ["Computer Engineering", "Electrical Engineering", "Civil Engineering", "Mechanical Engineering"],
+		medicine: ["General Medicine", "Surgery", "Pediatrics", "Cardiology"],
+		science: ["Physics", "Chemistry", "Biology", "Mathematics"],
+		arts: ["Literature", "History", "Philosophy", "Fine Arts"],
+		commerce: ["Marketing", "Finance", "Management", "Accounting"]
+		// Add more faculties and departments here
+	};
 
-      // Function to populate department options based on selected faculty
-      function populateDepartments(selectedFaculty) {
-        departmentSelect.innerHTML = '<option value="">Select Department</option>';
-        if (departments[selectedFaculty]) {
-          departments[selectedFaculty].forEach(department => {
-            const option = document.createElement('option');
-            option.value = department.toLowerCase().replace(/ /g, '_');
-            option.textContent = department;
-            departmentSelect.appendChild(option);
-          });
-        }
-      }
+	const facultySelect = document.getElementById('faculty');
+	const departmentSelect = document.getElementById('department');
 
-      // Event listener for faculty selection
-      facultySelect.addEventListener('change', function() {
-        populateDepartments(this.value);
-      });
+	// Function to populate department options based on selected faculty
+	function populateDepartments(selectedFaculty) {
+		departmentSelect.innerHTML = '<option value="">Select Department</option>';
+		if (departments[selectedFaculty]) {
+			departments[selectedFaculty].forEach(department => {
+				const option = document.createElement('option');
+				option.value = department.toLowerCase().replace(/ /g, '_');
+				option.textContent = department;
+				departmentSelect.appendChild(option);
+			});
+		}
+	}
+
+	// Event listener for faculty selection
+	facultySelect.addEventListener('change', function() {
+		populateDepartments(this.value);
+	});
+});
+
+     
+  </script>
+  <script>
+    $(document).ready(function() {
+    $('#uploadForm').submit(function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const sessionToken = localStorage.getItem('sessionToken'); // Or retrieve from cookie
+        console.log(localStorage.getItem("sessionToken"));//display session token
+
+
+        if (!sessionToken) {
+    alert('Session token missing. Please log in again.');
+    window.location.href = "courseebook.html"; // Redirect to login
+    return;
+}
+
+
+        $.ajax({
+            url: 'http://localhost:3000/upload-material',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('X-Parse-Session-Token', sessionToken); // Include token in header
+            },
+            success: function(data) {
+                alert('Material uploaded successfully!');
+                $('#uploadForm')[0].reset();
+            },
+            error: function(xhr, status, error) {
+                console.error('Upload error:', xhr.responseText);
+                alert('Failed to upload material. See console for details.');
+            }
+        });
     });
-
-
-
-  // Wait for the DOM to fully load
-  document.addEventListener('DOMContentLoaded', function() {
-    const uploadForm = document.getElementById('uploadForm');
-    uploadForm.addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent the default form submission
-      
-      // Here you can add any Ajax call or validation if needed
-      // For demonstration, we'll simulate a successful submission using a timeout.
-      setTimeout(function() {
-        // Redirect to the desired page after successful submission
-        window.location.href = "upload-thankyou.html";
-      }, 500); // 500ms delay to simulate processing
-    });
-  });
-
-
+});
   </script>
 </body>
 </html>

@@ -99,7 +99,7 @@
                         <h3 class="box-icon-modern-big-title">Interactive Course eBooks</h3>
                         <div class="box-icon-modern-decor"></div>
                         <p class="box-icon-modern-text">Engage with dynamic content. Transform static textbooks into interactive course eBooks that captivate and inspire your learners.</p>
-                        <a class="button button-primary button-ujarak" href="#authModal">Get started <span style="color: #FEE645">Its free</span></a>
+                        <a class="button button-primary button-ujarak" href="#authModal" data-toggle="modal">Get started <span style="color: #FEE645">Its free</span></a>
                       </div>
                     </article>
                   </div>
@@ -142,7 +142,7 @@
                   <div class="col-sm-7">
                     <h3 class="wow fadeInLeft">Transform Your Learning Experience!</h3>
                     <p>Ready to revolutionize your study sessions? Discover interactive course eBooks that adapt to your needs.</p>
-                    <div class="group-sm group-middle group justify-content-end"><a class="button button-primary button-ujarak" href="#authModal" data-toggle="modal">Get started <span style="color: #FEE645">Its free</span></a><a class="button button-white-outline button-ujarak" href="#">Learn More</a></div>
+                    <div class="group-sm group-middle group justify-content-end"><a class="button button-primary button-ujarak" href="#authModal" data-toggle="modal">Get started <span style="color: #FEE645">Its free</span></a><a class="button button-white-outline button-ujarak" href="#authModal">Learn More</a></div>
                   </div>
                 </div>
               </div>
@@ -497,34 +497,69 @@
       </div>--> 
 
 
+      <!-- Auth Modal -->
       <div class="modal fade" id="authModal">
         <span class="close-btn" id="closeModal">&times;</span>
         <div class="modal-content">
-            <div id="loginForm" class="modal-body active">
-              <h2 class="modal-title">Login</h2>
-                <div class="social-login">
-                    <button class="button button-google">Continue with Google</button>
-                    <button class="button button-apple">Sign in with Apple</button>
-                </div>
-                <input type="email" class="form-control" placeholder="Email"><br>
-                <input type="password" class="form-control" placeholder="Password"><br>
-                <a href="home.html"><button class="button button-primary">Login</button></a>
-                <p>Don't have an account? <span id="showSignup" class="link-classic">Sign Up</span></p>
+      
+          <!-- LOGIN FORM -->
+          <form id="loginForm" class="modal-body active">
+            <h2 class="modal-title">Login</h2>
+            <div class="social-login">
+              <button class="button button-google">Continue with Google</button>
             </div>
-            <div id="signupForm" class="modal-body hidden">
-                <h2 class="modal-title">Sign Up</h2>
-                <div class="social-login">
-                    <button class="button button-google">Continue with Google</button>
-                    <button class="button button-apple">Sign in with Apple</button>
-                </div>
-                <input type="text" class="form-control" placeholder="Name"><br>
-                <input type="email" class="form-control" placeholder="Email"><br>
-                <input type="password" class="form-control" placeholder="Password"><br>
-                <button class="button button-primary">Sign Up</button>
-                <p>Already have an account? <span id="showLogin" class="link-classic">Login</span></p>
+            <input 
+              type="email" 
+              id="loginEmail" 
+              class="form-control" 
+              placeholder="Email" 
+              required
+            /><br>
+            <input 
+              type="password" 
+              id="loginPassword" 
+              class="form-control" 
+              placeholder="Password" 
+              required
+            /><br>
+            <button class="button button-primary" type="submit">Login</button>
+            <p>Don't have an account? <span id="showSignup" class="link-classic">Sign Up</span></p>
+          </form>
+      
+          <!-- SIGNUP FORM -->
+          <form id="signupForm" class="modal-body hidden">
+            <h2 class="modal-title">Sign Up</h2>
+            <div class="social-login">
+              <button class="button button-google">Continue with Google</button>
+              <button class="button button-apple">Sign in with Apple</button>
             </div>
+            <input 
+              type="text" 
+              id="signinName" 
+              class="form-control" 
+              placeholder="Name"
+            /><br>
+            <input 
+              type="email" 
+              id="signinEmail" 
+              class="form-control" 
+              placeholder="Email" 
+              required
+            /><br>
+            <input 
+              type="password" 
+              id="signPassword" 
+              class="form-control" 
+              placeholder="Password" 
+              required
+            /><br>
+            <button class="button button-primary" type="submit">Sign Up</button>
+            <p>Already have an account? <span id="showLogin" class="link-classic">Login</span></p>
+          </form>
+      
         </div>
-    </div>
+      </div>
+      
     
 
 
@@ -533,7 +568,44 @@
     <div class="snackbars" id="form-output-global"></div>
     <!-- Javascript-->
     <script src="js/core.min.js"></script>
+    <script src="js/signin-out.js"></script>
     <script src="js/script.js"></script>
     <!-- coded by Himic-->
+    <script src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+    <script>
+      $(document).ready(function() {
+    $('#loginForm').submit(function(e) {
+        e.preventDefault();
+
+        const formData = {
+            email: $('#loginEmail').val(),
+            password: $('#loginPassword').val()
+        };
+
+        $.ajax({
+            url: 'http://localhost:3000/login',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function(response) {
+                if (response.user && response.user.sessionToken) {
+                    localStorage.setItem('sessionToken', response.user.sessionToken); // Store session token
+                    console.log(localStorage.getItem("sessionToken"));//display session token
+                    alert('Login successful!');
+                    window.location.href = "upload-material.html"; // Redirect to upload page
+                } else {
+                    alert('Login failed. No session token received.');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Login error:', xhr.responseText);
+                alert('Failed to login. See console for details.');
+            }
+        });
+    });
+});
+
+    </script>
+
   </body>
 </html>
