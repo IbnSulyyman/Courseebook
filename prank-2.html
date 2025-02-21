@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prank Modal</title>
+  <style>
+    /* Basic style for the starting button */
+    #startButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 50px;
+    }
+
+    /* Modal overlay */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    /* Modal content box */
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+      position: relative;
+      min-width: 300px;
+      /* Fixed width helps with button repositioning */
+      width: 300px;
+    }
+
+    /* Style for all modal buttons */
+    .modal-content button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- The button that starts the prank -->
+  <button id="startButton">Click Me!</button>
+
+  <script>
+    // URL to redirect on final "Yes"
+    const finalRedirectLink = "https://example.com"; // Change this link as needed
+
+    /**
+     * Creates and displays a modal with the given question and button callbacks.
+     * @param {string} questionText - The question to display.
+     * @param {Function} yesCallback - Called when the "Yes" button is clicked.
+     * @param {Function} noCallback - Called when the "No" button is (somehow) clicked.
+     */
+    function createModal(questionText, yesCallback, noCallback) {
+      // Create overlay
+      const modal = document.createElement('div');
+      modal.className = 'modal';
+
+      // Create modal content container
+      const modalContent = document.createElement('div');
+      modalContent.className = 'modal-content';
+
+      // Create and append question text
+      const question = document.createElement('p');
+      question.textContent = questionText;
+      modalContent.appendChild(question);
+
+      // Create "Yes" button
+      const yesButton = document.createElement('button');
+      yesButton.textContent = 'Yes';
+      yesButton.addEventListener('click', () => {
+        document.body.removeChild(modal);
+        yesCallback();
+      });
+      modalContent.appendChild(yesButton);
+
+      // Create "No" button with escaping behavior
+      const noButton = document.createElement('button');
+      noButton.textContent = 'No';
+      // Use absolute positioning so it can move around within the modal-content
+      noButton.style.position = 'absolute';
+      noButton.style.left = '50%';
+      noButton.style.top = '50%';
+      noButton.style.transform = 'translate(-50%, -50%)';
+      
+      // When mouseover, move the button to a random spot inside the modal-content
+      noButton.addEventListener('mouseover', function() {
+        const contentRect = modalContent.getBoundingClientRect();
+        const buttonRect = noButton.getBoundingClientRect();
+
+        // Calculate available movement area (with some padding)
+        const padding = 10;
+        const maxX = contentRect.width - buttonRect.width - padding;
+        const maxY = contentRect.height - buttonRect.height - padding;
+        const newX = Math.random() * maxX + padding;
+        const newY = Math.random() * maxY + padding;
+        
+        noButton.style.left = newX + 'px';
+        noButton.style.top = newY + 'px';
+      });
+
+      // In case the user manages to click "No"
+      noButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (typeof noCallback === 'function') {
+          noCallback();
+        }
+      });
+      modalContent.appendChild(noButton);
+
+      modal.appendChild(modalContent);
+      document.body.appendChild(modal);
+    }
+
+    // Chain of modal dialogs
+
+    // Final modal: clicking "Yes" redirects to the specified link
+    function finalModal() {
+      createModal("Do you really want to proceed?", () => {
+        window.location.href = finalRedirectLink;
+      });
+    }
+
+    // Second modal: clicking "Yes" leads to the final modal
+    function secondModal() {
+      createModal("Are you sure about this?", finalModal);
+    }
+
+    // Initial modal triggered by clicking the start button
+    document.getElementById('startButton').addEventListener('click', function() {
+      createModal("Will you go out with me? (Prank Question)", secondModal);
+    });
+  </script>
+</body>
+</html>

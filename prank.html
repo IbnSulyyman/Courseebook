@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prank Time!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Ready for a Surprise?</h1>
+    <button id="prankButton">Click Me!</button>
+
+    <div id="questionBox" class="hidden">
+        <p id="questionText"></p>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+    </div>
+
+    <style>
+      body {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#prankButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#questionBox {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px auto;
+    width: 300px;
+}
+
+.hidden {
+    display: none;
+}
+
+#noButton {
+    position: absolute; /* Important for moving the button */
+}
+    </style>
+    <script src="script.js"></script>
+</body>
+
+<script>const prankButton = document.getElementById('prankButton');
+  const questionBox = document.getElementById('questionBox');
+  const questionText = document.getElementById('questionText');
+  const yesButton = document.getElementById('yesButton');
+  const noButton = document.getElementById('noButton');
+  
+  const REDIRECT_URL = "https://www.example.com"; // Replace with your desired URL
+  
+  const QUESTIONS = [
+      "Are you having a good day?",
+      "Are you sure?",
+      "Really, really sure?",
+      "Last question: Do you want a surprise?",
+      "Final Confirmation: Ready to be amazed?" // Final Question with "Yes" to redirect
+  ];
+  
+  let currentQuestionIndex = 0;
+  
+  function showQuestion(index) {
+      questionText.textContent = QUESTIONS[index];
+  }
+  
+  function moveNoButton() {
+      const maxX = window.innerWidth - noButton.offsetWidth;
+      const maxY = window.innerHeight - noButton.offsetHeight;
+  
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+  
+      noButton.style.left = randomX + 'px';
+      noButton.style.top = randomY + 'px';
+  }
+  
+  prankButton.addEventListener('click', () => {
+      prankButton.classList.add('hidden'); // Hide the initial button
+      questionBox.classList.remove('hidden'); // Show the question box
+      showQuestion(currentQuestionIndex);
+  
+      // Position the No button initially
+      moveNoButton();
+  });
+  
+  yesButton.addEventListener('click', () => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < QUESTIONS.length) {
+          showQuestion(currentQuestionIndex);
+      } else {
+          window.location.href = REDIRECT_URL; // Redirect on final "Yes"
+      }
+  });
+  
+  noButton.addEventListener('mouseover', moveNoButton);</script>
+</html>
