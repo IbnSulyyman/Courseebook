@@ -581,34 +581,26 @@
     <script src="https://npmcdn.com/parse/dist/parse.min.js"></script>
     <script>
       $(document).ready(function() {
-    $('#loginForm').submit(function(e) {
+    $('#loginForm').submit(async function(e) {
         e.preventDefault();
 
-        const formData = {
-            email: $('#loginEmail').val(),
-            password: $('#loginPassword').val()
-        };
+        const email = $('#loginEmail').val();
+        const password = $('#loginPassword').val();
 
-        $.ajax({
-            url: 'http://localhost:3000/login',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(formData),
-            success: function(response) {
-                if (response.user && response.user.sessionToken) {
-                    localStorage.setItem('sessionToken', response.user.sessionToken); // Store session token
-                    console.log(localStorage.getItem("sessionToken"));//display session token
-                    alert('Login successful!');
-                    window.location.href = "upload-material.html"; // Redirect to upload page
-                } else {
-                    alert('Login failed. No session token received.');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('Login error:', xhr.responseText);
-                alert('Failed to login. See console for details.');
+        try {
+            const data = await Parse.Cloud.run("login", { email, password });
+
+            if (data.user && data.user.objectId) {
+                sessionStorage.setItem('userId', data.user.objectId); // Store userId in sessionStorage
+                alert('Login successful!');
+                window.location.href = "upload-material.html"; // Redirect to upload page
+            } else {
+                alert('Login failed. No user data received.');
             }
-        });
+        } catch (error) {
+            console.error('Login error:', error);
+            alert('Failed to login. ' + error.message);
+        }
     });
 });
 
