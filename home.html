@@ -80,7 +80,7 @@
                         <div class="feature-icon"></div>
                         <h3>Search</h3>
                         <p>Search for respective school, faculty, department and course to access materials.<br>Click below button for easy navigation</p>
-                        <a href="universities.html" class="button button-primary button-ujarak">Search</a>          
+                        <a href="universities.html" class="button button-primary button-ujarak">Search</a>
 
                     </article>
                     <article class="feature-card">
@@ -92,11 +92,10 @@
                         <div class="feature-icon"></div>
                         <h3>Upload Material</h3>
                         <p>Help others by contibuting to cummunity.</p>
-                        <a href="upload-material.html" class="button button-primary button-ujarak">upload</a> 
                     </article>
                 </div>
             </section>
-    
+
             <aside class="sidebar">
                 <div class="profile-completion">
                     <h3>Complete your profile</h3>
@@ -111,7 +110,7 @@
                 </div>
             </aside>
         </section>
-        
+
 
       </div>
         <!-- See all services-->
@@ -128,7 +127,7 @@
                         <h3 class="box-icon-modern-big-title">Interactive Course eBooks</h3>
                         <div class="box-icon-modern-decor"></div>
                         <p class="box-icon-modern-text">Engage with dynamic content. Transform static textbooks into interactive course eBooks that captivate and inspire your learners.</p>
-                        
+
                       </div>
                     </article>
                   </div>
@@ -161,7 +160,7 @@
             </div>
           </div>
         </section>
-  
+
         <!-- Cta-->
         <section class="section section-fluid bg-default">
           <div class="parallax-container" data-parallax-img="images/parallax-1.jpg">
@@ -442,7 +441,7 @@
         </div>
       </section>
 
-      
+
       </section>
 
       <!-- Page Footer-->
@@ -472,7 +471,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4 order-sm-first">
                   <!-- Rights-->
-                  <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span> <span>CourseEbook</span>
+                  <p class="rights"><span>© </span><span class="copyright-year"></span> <span>CourseEbook</span>
                   </p>
                 </div>
                 <div class="col-sm-6 col-md-4 text-md-right"><span>All rights reserved.</span>
@@ -484,7 +483,7 @@
 
 
       <div class="modal fade" id="authModal">
-        <span class="close-btn" id="closeModal">&times;</span>
+        <span class="close-btn" id="closeModal">×</span>
         <div class="modal-content">
             <div id="loginForm" class="modal-body active">
                 <h2 class="modal-title">Login</h2>
@@ -511,7 +510,6 @@
             </div>
         </div>
     </div>
-    
 
 
     </div>
@@ -520,31 +518,24 @@
     <!-- Javascript-->
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
-    <!-- coded by Himic-->
     <script>
-      document.addEventListener('DOMContentLoaded', async () => {
-          const userId = sessionStorage.getItem('userId');
-          const userNamePlaceholderSpan = document.getElementById('userNamePlaceholder');
+        document.addEventListener('DOMContentLoaded', async () => {
+            const userId = sessionStorage.getItem('userId');
+            const userNamePlaceholderSpan = document.getElementById('userNamePlaceholder');
 
-          if (userId) {
-              try {
-                  const response = await fetch(`http://localhost:3000/get-user-name/${userId}`);
-                  if (response.ok) {
-                      const data = await response.json();
-                      userNamePlaceholderSpan.textContent = data.name || 'User'; // Use 'User' as default if name is not returned
-                  } else {
-                      console.error("Failed to fetch user name:", response.statusText);
-                      userNamePlaceholderSpan.textContent = 'User'; // Default name in case of error
-                  }
-              } catch (error) {
-                  console.error("Error fetching user name:", error);
-                  userNamePlaceholderSpan.textContent = 'User'; // Default name in case of error
-              }
-          } else {
-              userNamePlaceholderSpan.textContent = 'there'; // Default if not logged in
-          }
-      });
-  </script>
-     
+            if (userId) {
+                try {
+                    const data = await Parse.Cloud.run("getUserName", { userId: userId }); // Call 'getUserName' Cloud Function
+                    userNamePlaceholderSpan.textContent = data.name || 'User';
+                } catch (error) {
+                    console.error("Failed to fetch user name:", error);
+                    userNamePlaceholderSpan.textContent = 'User';
+                }
+            } else {
+                userNamePlaceholderSpan.textContent = 'there';
+            }
+        });
+    </script>
+    <!-- coded by Himic-->
   </body>
 </html>
