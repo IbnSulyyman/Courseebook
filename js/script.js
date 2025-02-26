@@ -1453,38 +1453,5 @@
 
 
 
-//Model signup /signin
-document.getElementById("showSignup").addEventListener("click", function () {
-	document.getElementById("loginForm").classList.add("hidden");
-	document.getElementById("signupForm").classList.remove("hidden");
-});
-
-document.getElementById("showLogin").addEventListener("click", function () {
-	document.getElementById("signupForm").classList.add("hidden");
-	document.getElementById("loginForm").classList.remove("hidden");
-});
-
-
-//Search Funtionality Script for University
-document.addEventListener('DOMContentLoaded', function () {
-	var searchInput = document.querySelector('.search-input');
-	var universityItems = document.querySelectorAll('.university-item');
-
-	function filterUniversities() {
-			var query = searchInput.value.toLowerCase().trim();
-			universityItems.forEach(function (item) {
-					var name = item.querySelector('.university-name').textContent.toLowerCase();
-					// If the university name includes the query, show the item; otherwise, hide it.
-					if (name.includes(query)) {
-							item.style.display = "block"; // Ensure items are displayed properly
-					} else {
-							item.style.display = "none";
-					}
-			});
-	}
-
-	// Listen for user input
-	searchInput.addEventListener('input', filterUniversities);
-});
 
 new WOW().init();
