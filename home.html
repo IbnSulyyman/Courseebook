@@ -525,6 +525,30 @@
     Parse.initialize("OzSePUQdIYYIq2v0vMjy4Cg2AtIw95D5dp12OG2N", "6ZcfT4re40IfpqORCKy2mLXl3d5NYuFQJIDdp1iT"); // Replace with your Back4App keys
     Parse.serverURL = "https://parseapi.back4app.com/";
 
+    // Validate session
+      const currentUser = Parse.User.current();
+      const storedToken = localStorage.getItem("sessionToken");
+
+      if (currentUser && storedToken) {
+        console.log("Session valid. User:", currentUser.get("email"));
+        console.log("Session token:", storedToken);
+        document.getElementById("pageContent").style.display = "block";
+      } else {
+        console.log("No valid session. Redirecting to login.");
+        window.location.assign("courseebook.html");
+      }
+
+      // Logout functionality
+      document.getElementById("logoutBtn").addEventListener("click", async () => {
+        try {
+          await Parse.User.logOut();
+          localStorage.removeItem("sessionToken");
+          console.log("Logged out successfully");
+          window.location.assign("courseebook.html");
+        } catch (error) {
+          console.error("Logout failed:", error.message);
+        }
+      });
 
     </script>
 </body>
