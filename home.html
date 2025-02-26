@@ -515,11 +515,24 @@
 
     </div>
     <!-- Global Mailform Output-->
-    <div class="snackbars" id="form-output-global"></div>
-    <!-- Javascript-->
-    <script src="js/core.min.js"></script>
-    <script src="js/script.js"></script>
-   
-    <!-- coded by Himic-->
-  </body>
+  <div class="snackbars" id="form-output-global"></div>
+  <!-- Javascript-->
+  <script src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+  <script src="js/core.min.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    // Initialize Parse
+    Parse.initialize("YOUR_APP_ID", "YOUR_JAVASCRIPT_KEY"); // Replace with your Back4App keys
+    Parse.serverURL = "https://parseapi.back4app.com/";
+
+    // Check if user is logged in
+    const currentUser = Parse.User.current();
+    if (currentUser) {
+      document.getElementById("pageContent").style.display = "block";
+      console.log("User is logged in:", currentUser.get("email"));
+    } else {
+      window.location.href = "courseebook.html"; // Redirect to login if not authenticated
+    }
+  </script>
+</body>
 </html>
