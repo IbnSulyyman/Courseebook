@@ -13,13 +13,6 @@
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
     <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
-
-    <script src="https://npmcdn.com/parse@4.8.1"></script>
-    <script>
-      // Use the same keys as in your main.js and other pages
-      Parse.initialize("403QXntisL9WKQBkFzSMCplu5wo6QTtcfbdQEdzX", "b6ECz5K4917ka5uYYnsUsFR8kG6J7pjSSI6ZbFvH");
-      Parse.serverURL = 'https://parseapi.back4app.com';
-    </script>
   </head>
   <body>
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
@@ -578,33 +571,7 @@
     <script src="js/signin-out.js"></script>
     <script src="js/script.js"></script>
     <!-- coded by Himic-->
-    <script src="https://npmcdn.com/parse/dist/parse.min.js"></script>
-    <script>
-      $(document).ready(function() {
-    $('#loginForm').submit(async function(e) {
-        e.preventDefault();
-
-        const email = $('#loginEmail').val();
-        const password = $('#loginPassword').val();
-
-        try {
-            const data = await Parse.Cloud.run("login", { email, password });
-
-            if (data.user && data.user.objectId) {
-                sessionStorage.setItem('userId', data.user.objectId); // Store userId in sessionStorage
-                alert('Login successful!');
-                window.location.href = "upload-material.html"; // Redirect to upload page
-            } else {
-                alert('Login failed. No user data received.');
-            }
-        } catch (error) {
-            console.error('Login error:', error);
-            alert('Failed to login. ' + error.message);
-        }
-    });
-});
-
-    </script>
+    
 
   </body>
 </html>
