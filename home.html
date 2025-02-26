@@ -529,8 +529,7 @@
     const currentUser = Parse.User.current();
     if (currentUser) {
       document.getElementById("pageContent").style.display = "block";
-      console.log("User is logged in:", currentUser.get("email"))
-      window.location.href = "home.html";
+      console.log("User is logged in:", currentUser.get("email"));
     } else {
       window.location.href = "courseebook.html"; // Redirect to login if not authenticated
     }
