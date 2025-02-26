@@ -525,14 +525,92 @@
     Parse.initialize("OzSePUQdIYYIq2v0vMjy4Cg2AtIw95D5dp12OG2N", "6ZcfT4re40IfpqORCKy2mLXl3d5NYuFQJIDdp1iT"); // Replace with your Back4App keys
     Parse.serverURL = "https://parseapi.back4app.com/";
 
-    // Check if user is logged in
-    const currentUser = Parse.User.current();
-    if (currentUser) {
-      document.getElementById("pageContent").style.display = "block";
-      console.log("User is logged in:", currentUser.get("email"));
-    } else {
-      window.location.href = "courseebook.html"; // Redirect to login if not authenticated
-    }
-  </script>
+    // Check session on page load
+      const currentUser = Parse.User.current();
+      if (currentUser) {
+        console.log("User already logged in:", currentUser.get("email"));
+        console.log("Session token:", currentUser.getSessionToken());
+        window.location.assign("home.html"); // Redirect if already logged in
+      }
+
+      // Modal toggle logic
+      const loginForm = document.getElementById("loginForm");
+      const signupForm = document.getElementById("signupForm");
+      const showSignup = document.getElementById("showSignup");
+      const showLogin = document.getElementById("showLogin");
+      const closeModal = document.getElementById("closeModal");
+      const authModal = document.getElementById("authModal");
+
+      showSignup.addEventListener("click", () => {
+        loginForm.classList.remove("active");
+        loginForm.classList.add("hidden");
+        signupForm.classList.remove("hidden");
+        signupForm.classList.add("active");
+      });
+
+      showLogin.addEventListener("click", () => {
+        signupForm.classList.remove("active");
+        signupForm.classList.add("hidden");
+        loginForm.classList.remove("hidden");
+        loginForm.classList.add("active");
+      });
+
+      closeModal.addEventListener("click", () => {
+        authModal.classList.remove("show");
+        authModal.style.display = "none";
+      });
+
+      // Handle Login
+      loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("loginEmail").value.trim();
+        const password = document.getElementById("loginPassword").value.trim();
+        const errorDiv = document.getElementById("loginError");
+
+        console.log("Attempting login with:", email);
+
+        try {
+          const user = await Parse.User.logIn(email, password);
+          const sessionToken = user.getSessionToken();
+          console.log("Login successful! Session token:", sessionToken);
+          errorDiv.style.display = "none";
+          authModal.style.display = "none";
+          localStorage.setItem("sessionToken", sessionToken); // Store token for later use
+          window.location.assign("home.html"); // Force redirect
+        } catch (error) {
+          console.error("Login failed:", error.message);
+          errorDiv.style.display = "block";
+          errorDiv.textContent = "Login failed: " + error.message;
+        }
+      });
+
+      // Handle Signup
+      signupForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const name = document.getElementById("signinName").value.trim();
+        const email = document.getElementById("signinEmail").value.trim();
+        const password = document.getElementById("signPassword").value.trim();
+        const errorDiv = document.getElementById("signupError");
+
+        const user = new Parse.User();
+        user.set("username", email);
+        user.set("email", email);
+        user.set("password", password);
+        user.set("name", name);
+
+        try {
+          await user.signUp();
+          const sessionToken = user.getSessionToken();
+          console.log("Signup successful! Session token:", sessionToken);
+          errorDiv.style.display = "none";
+          localStorage.setItem("sessionToken", sessionToken);
+          window.location.assign("home.html");
+        } catch (error) {
+          console.error("Signup failed:", error.message);
+          errorDiv.style.display = "block";
+          errorDiv.textContent = "Signup failed: " + error.message;
+        }
+      });
+    </script>
 </body>
 </html>
